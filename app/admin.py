@@ -13,7 +13,15 @@ class DisciplinaInline(admin.TabularInline):
 class AvaliacaoInline(admin.TabularInline):
     model = Avaliacao
     extra = 1
-
+class MatriculaInline(admin.TabularInline):
+    model = Matricula
+    extra = 1
+class CidadeInline(admin.TabularInline):
+    model = Cidade
+    extra = 1
+class FrequenciaInline(admin.TabularInline):
+    model = Frequencia
+    extra = 1
 
 class OcupacaoAdmin(admin.ModelAdmin):
     list_display = ('nome',)
@@ -41,16 +49,27 @@ class DisciplinaAdmin(admin.ModelAdmin):
     inlines = [AvaliacaoInline]
 
 class TurmaAdmin(admin.ModelAdmin):
+    list_display = ('nome', 'curso',)
+    search_fields = ('nome', 'curso__nome',)
+    inlines = [
+        MatriculaInline,
+        DisciplinaInline,
+        AvaliacaoInline,
+        FrequenciaInline,
+        ]
+
+class UFadmin(admin.ModelAdmin):
     list_display = ('nome',)
     search_fields = ('nome',)
-    inlines = [PessoaInline]
+    inlines = [CidadeInline]
 
 admin.site.register(Ocupacao, OcupacaoAdmin)
 admin.site.register(InstituicaoEnsino, InstituicaoAdmin)
+admin.site.register(UF, UFadmin)
 admin.site.register(Cidade)
 admin.site.register(AreaSaber, AreadoSaberAdmin)
 admin.site.register(Curso, CursoAdmin)
-admin.site.register(Turma)
+admin.site.register(Turma, TurmaAdmin)
 admin.site.register(Avaliacao)
 admin.site.register(Turnos)
 admin.site.register(Pessoa)
