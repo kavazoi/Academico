@@ -124,9 +124,10 @@ class Curso(models.Model):
 
 class Turma(models.Model):
     nome = models.CharField(max_length=100, verbose_name="Turma")
-    curso = models.ForeignKey(Curso, on_delete=models.CASCADE, null=True, blank=True, verbose_name="Curso")  
+    curso = models.ForeignKey(Curso, on_delete=models.CASCADE, null=True, blank=True, verbose_name="Curso")
+     
     def __str__(self):
-        return {self.nome}
+        return f'{self.nome}'
     
     class Meta:
         verbose_name = "Turma"
