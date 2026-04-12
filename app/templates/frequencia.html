@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <title>Acadêmico - Index</title>
+    <title>Acadêmico - Frequência</title>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -66,7 +66,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link text-dark" href="/unidfederativa/">UF</a>
+                    <a class="nav-link text-dark" href="/ufs/">UF</a>
                 </li>
 
                 <li class="nav-item">
@@ -87,6 +87,35 @@
             </ul>
         </div>
     </nav>
+
+    <div class="container mt-5">
+        <div class="jumbotron text-center">
+            <h1 class="display-4">Bem-Vindo(a) à aplicação do Acadêmico!</h1>
+            <h2 class="display-5">Essa é a tabela das frequências:</h2>
+        </div>
+    </div>
+
+    <div class="jumbotron container mt-5 mx-auto d-flex justify-content-center">
+        <table class="table table-bordered w-auto">
+    <tr>
+        <th>Pessoa</th>
+        <th>Curso</th>
+        <th>Disciplina</th>
+        <th>Turma</th>
+        <th>Faltas</th>
+    </tr>
+    {% for f in frequencias %}
+    <tr>
+        <td>{{ f.pessoa }}</td>
+        <td>{{ f.curso }}</td>
+        <td>{{ f.disciplina }}</td>
+        <td>{{ f.turma }}</td>
+        <td>{{ f.numero_faltas }}</td>
+    </tr>
+    {% endfor %}
+        </table>
+    </div>
+
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
